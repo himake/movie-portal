@@ -1,0 +1,8 @@
+-if likeable.class.to_s == "Movie"
+  = link_to movie_like_path(likeable, 1), method: "delete", remote: true do
+    %h3.bi.bi-heart-fill
+  %h3.count= likeable.likes.count
+-if likeable.class.to_s == "Serial"
+  = link_to serial_like_path(likeable, 1), method: "delete", remote: true do
+    %h3.bi.bi-heart-fill
+  %h3.count= likeable.likes.count

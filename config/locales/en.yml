@@ -1,0 +1,48 @@
+en:
+  duration: duration
+  category: ccategory
+  director: director
+  overview: Overview
+  actors: Actors
+  comments: Comments
+  add_comment: Add Comment
+  comment: Comment
+  write_comment: Write your comment
+  like_it: You might like it
+  home: Home
+  films: Films
+  serials: Serials
+  tv_serials: TV Serials
+  serials_made: Serials made
+  movies_made: Movies made
+  biography: Biography
+  birthday: birthday
+  nationality: nationality
+  stared_movies: Starred movies
+  stared_serials: Starred serials
+  language: Language
+  statistic: Statistics
+  profile: Profile
+  liked: Liked
+  wished: Wished
+  name: Name
+  surname: Surname
+  log_out: Log out
+  log_in: Log in
+  sign_up: Sig up
+  search: Search
+  search_result: Search result
+  trailer: Trailer
+  release_date: release date
+  seasons: Seasons
+  series: Episodes
+  all_seasons: All seasons
+  all_series: All episodes
+  more: More
+  movie: Movie
+  actor: Actor
+  serial: Serial
+  no_ifomation: No Information
+  admin_panel: Admin panel
+  last_trailers: Last trailers
+  last_tv_trailers: Last TV trailers

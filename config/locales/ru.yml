@@ -1,0 +1,51 @@
+ru:
+  time:
+    formats:
+      long: "%Y-%m-%d %H:%M:%S"
+  duration: длительность
+  category: жанр
+  director: режисёр
+  overview: Описание
+  actors: Актёры
+  comments: Коментарии
+  add_comment: Добавить коментарий
+  comment: Коментировать
+  write_comment: Введите коментарий
+  like_it: Вам может понравится
+  home: Главная
+  films: Фильмы
+  serials: Сериалы
+  tv_serials: ТВ сериалы
+  serials_made: Сериалы
+  movies_made: Фильмы
+  biography: Биография
+  birthday: дата рождения
+  nationality: национальность
+  stared_movies: Фильмы с участием
+  stared_serials: Сериалы с участием
+  language: Язык
+  statistic: Статистика
+  profile: Профиль
+  liked: Понравилось
+  wished: Буду смотреть
+  name: Имя
+  surname: Фамилия
+  log_out: Выйти
+  log_in: Войти
+  sign_up: Зарегистрироватся
+  search: Поиск
+  search_result: Результаты поиска
+  trailer: Трейлер
+  release_date: Релиз
+  seasons: Сезоны
+  series: Эпизоды
+  all_seasons: Все сезоны
+  all_series: Все эпизоды
+  more: Больше
+  movie: Фильм
+  actor: Актёр
+  serial: Сериал
+  no_ifomation: Нет информации
+  admin_panel: Панель админестратора
+  last_trailers: Последние трейлеры
+  last_tv_trailers: Последние трейлеры сериалов

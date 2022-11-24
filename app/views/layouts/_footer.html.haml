@@ -1,0 +1,23 @@
+- unless current_page?(user_root_path)
+  %footer
+    .navbar.justify-content-center
+      %a.navbar-brand{href: root_path}
+        =image_tag 'download.png', alt: 'movie-portal', height: '50px', width: '50px'
+        = "Movie-portal"
+      - if current_user  
+        .nav-item
+          = link_to t('profile'), user_root_path, class: 'nav-link'
+        .nav-item
+          = link_to t('log_out'), destroy_user_session_path, method: :delete, class: 'nav-link'
+        - if current_user.admin?
+          .nav-item
+            = link_to t('admin_panel'), admin_root_path, class: 'nav-link'
+      -else
+        .nav-item
+          = link_to t('log_in'), user_session_path, class: 'nav-link'
+        .nav-item
+          = link_to t('sign_up'), new_user_registration_path, class: 'nav-link'
+      .nav-item
+        = link_to "En", :controller => controller_name, :action => action_name, :locale => "en", class: 'nav-link'
+        = '/'
+        = link_to "Ru", :controller => controller_name, :action => action_name, :locale => "ru", class: 'nav-link'

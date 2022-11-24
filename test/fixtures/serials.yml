@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyString
+  video_key: MyString
+  release_date: 2020-11-03
+  duration: 2020-11-03 14:12:24
+  category: one
+  director: one
+
+two:
+  name: MyString
+  description: MyString
+  video_key: MyString
+  release_date: 2020-11-03
+  duration: 2020-11-03 14:12:24
+  category: two
+  director: two

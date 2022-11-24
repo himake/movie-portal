@@ -1,0 +1,8 @@
+-if likeable.class.to_s == "Movie"
+  = link_to movie_likes_path(movie_id: likeable.id), remote: true, method: :post do
+    %h3.bi.bi-heart
+  %h3.count= likeable.likes.count
+-if likeable.class.to_s == "Serial"
+  = link_to serial_likes_path(serial_id: likeable.id), remote: true, method: :post do
+    %h3.bi.bi-heart
+  %h3.count= likeable.likes.count

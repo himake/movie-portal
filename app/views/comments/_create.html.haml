@@ -1,0 +1,9 @@
+%h4.section-name= t('add_comment')
+%br
+%br
+= form_for [commentable, Comment.create], remote: false, method: :post do |f|
+  .form-block
+    .form-group
+      =f.text_area :body, placeholder: "#{t('write_comment')}", class: "form-input"
+  .actions
+    =f.submit "#{t('comment')}", class: "btn form_button"

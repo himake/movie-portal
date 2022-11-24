@@ -1,0 +1,73 @@
+%br
+.movie-main
+  %h3.font-weight-bold{style: "padding-left: 7%"}= @movie.name
+  .container
+    .row
+      .col-4
+        -if @movie.image 
+          %img.movie-img{ src: "https://image.tmdb.org/t/p/w300#{@movie.image}", alt: @movie.name }
+        -else
+          %img.movie-no-img
+      .col-8
+        %h4.video-section= t('trailer')
+        %iframe.video{ src: "https://www.youtube.com/embed/#{@movie.video_key}" }
+    .row
+      .col-4
+        %br
+        .control-container
+          #like-container
+            - if !current_user.nil? && current_user.liked?("Movie", @movie.id)
+              = render("likes/unlike", likeable: @movie)
+            - else
+              = render("likes/like", likeable: @movie)
+          #wish-container
+            -if !current_user.nil? && current_user.wished?("Movie", @movie.id)
+              = render("wishes/unwish", wishable: @movie)
+            - else
+              = render("wishes/wish", wishable: @movie)
+        %br
+        %ul.attributes-list
+          %li
+            .attribute-name= t('director')
+            -if @movie.director&.full_name.nil?
+              .attribute-value no info
+            -else 
+              = link_to "#{@movie.director&.full_name}", director_path(@movie.director), class: 'attribute-link'
+          %li
+            .attribute-name= t('category')
+            .attribute-value= is_exist(@movie.category&.name)
+          %li
+            .attribute-name= t('duration')
+            .attribute-value= is_exist(@movie.duration)
+          %li
+            .attribute-name= t('release_date')
+            .attribute-value= is_exist(@movie.release_date)
+      .col-8
+        %h4.section-name= t('overview')
+        .text-justify= is_exist(@movie.description)
+        %h4.section-name= t('actors')
+        %ul.actor-list
+          =render @actors
+    .row
+      .col-12
+        - if @movie.comments.count > 0
+          %h4.section-name= "#{t('comments')} (#{@movie.comments.count})"
+          %br
+          %ul.be-comment-block#comments
+            =render @comments
+          =paginate @comments
+        -if !current_user.nil?
+          =render("comments/create", commentable: @movie)
+    %h4.section-name= t('like_it')
+    .row
+      %ul.home-movie-list
+        -@movies.each do |movie|
+          = link_to movie_path(movie) do
+            %li.movie-title
+              -if movie.image
+                %img.movie-home-img{ src: "https://image.tmdb.org/t/p/w300#{movie.image}", alt: movie.name }
+              - else
+                %img.movie-no-img    
+              %br
+              = link_to movie.name, movie_path(movie), class: 'link'
+              .small= movie.release_date.year

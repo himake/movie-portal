@@ -1,0 +1,39 @@
+.edit_form
+  %h2.form_header= t('.title', resource: resource.model_name.human)
+  = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+    = render "devise/shared/error_messages", resource: resource
+    .photo-form
+      .field
+        %h4.form_header Update Photo
+        = f.file_field :image, :required => false, :autofocus => true
+    %br
+    %br
+    %br
+    %br
+    .field
+      %h4.form_header= t('name')
+      = f.text_field :name, :required => false, :autofocus => true, placeholder: 'name', class: 'form-control'
+    %br
+    .field
+      %h4.form_header= t('surname')
+      = f.text_field :surname, :required => false, :autofocus => true, placeholder: 'surname', class: 'form-control'
+    %br
+    .field
+      %h4.form_header= t('activerecord.attributes.user.password')
+      .p.form-text= t('.leave_blank_if_you_don_t_want_to_change_it')
+      - if @minimum_password_length
+        .small.form-text= t('devise.shared.minimum_password_length', count: @minimum_password_length)
+      = f.password_field :password, :required => false, :autofocus => true, placeholder: t('activerecord.attributes.user.password'), class: 'form-control'
+    %br  
+    .field
+      = f.password_field :password_confirmation, :required => false, :autofocus => true, placeholder: t('activerecord.attributes.user.password_confirmation'), class: 'form-control'
+    %br
+    .field
+      .p.form-text= t('.we_need_your_current_password_to_confirm_your_changes')
+      = f.password_field :current_password, :required => false, :autofocus => true, placeholder: t('activerecord.attributes.user.current_password'), class: 'form-control'
+    .actions
+      %button.btn.form_button= t('.update')
+  %h4.form_header= t('.cancel_my_account')
+  = button_to t('.unhappy'), registration_path(resource_name), data: { confirm: t('.are_you_sure') }, method: :delete, class: "btn form_button"
+  %br
+  = link_to t('devise.shared.links.back'), :back, class: "btn form_button"

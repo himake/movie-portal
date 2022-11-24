@@ -1,0 +1,8 @@
+= link_to series_path(series.id) do
+  %li
+    -if series.image
+      %img{ src: "https://image.tmdb.org/t/p/w185#{series.image}", class: 'series-img'}
+    -else
+      =image_tag 'download.png', class: 'series-img'
+    %br 
+    = link_to series.name, series_path(series.id), class: 'link'

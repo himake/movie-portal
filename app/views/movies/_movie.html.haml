@@ -1,0 +1,5 @@
+= link_to movie_path(movie), class: "profile-tab-link" do
+  %li.movie-item-prodile
+    %h6=movie.name
+    .small= "#{t('duration')}: #{movie.duration}" 
+    %br

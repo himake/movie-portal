@@ -1,0 +1,55 @@
+%br
+.movie-main
+  %h3.font-weight-bold{style: "padding-left: 7%"}= is_exist(@season.name)
+  .container
+    .row
+      .col-4
+        -if @season.image 
+          %img.movie-img{ src: "https://image.tmdb.org/t/p/w300#{@season.image}", alt: @season.name }
+        -else
+          =image_tag 'download.png', class: 'movie-no-img'
+      .col-8
+        %h4.video-section= t('trailer')
+        %iframe.video{ src: "https://www.youtube.com/embed/#{@season.video_key}" }
+        %h4.section-name= t('overview')
+        .text-justify= is_exist(@season.description)
+    .row
+      .col-12
+        %h4.section-name= t('series')
+        %ul.series-list
+          =render @series
+    .row
+      .col-12
+        %h4.section-name= t('actors')
+        %ul.actor-list
+          =render @actors
+    -if @seasons.count > 0
+      .row
+        .col-12
+          %h4.section-name= t('all_seasons')
+          %ul.actor-list
+            =render @seasons
+    .row
+      .col-12
+        - if @season.comments.count > 0
+          %h4.section-name= "#{t('comments')} (#{@season.comments.count})"
+          %br
+          %ul.be-comment-block#comments
+            =render @comments
+          =paginate @comments
+        -if !current_user.nil?
+          =render("comments/create", commentable: @season)
+    .row
+      %h4.section-name= t('like_it')
+      .col-12
+        %ul.home-movie-list
+          -@serials.each do |serial|
+            = link_to serial_path(serial) do
+              %li.movie-title
+                -if serial.image
+                  %img.movie-home-img{ src: "https://image.tmdb.org/t/p/w300#{serial.image}", alt: serial.name }
+                - else
+                  %img.movie-no-img    
+                %br
+                = link_to serial.name, serial_path(serial), class: 'link'
+                .small= serial.release_date.year

@@ -1,0 +1,13 @@
+.main 
+  %h3.section-name= t('films')
+  %ul.movie-list
+    -@movies.each do |movie|
+      = link_to movie_path(movie) do
+        %li.movie-title
+          -if movie.image
+            %img.movie-home-img{ src: "https://image.tmdb.org/t/p/w300#{movie.image}", alt: movie.name }
+          - else
+            %img.movie-no-img    
+          %br
+          = link_to movie.name, movie_path(movie), class: 'link'
+          .small= movie.release_date.year

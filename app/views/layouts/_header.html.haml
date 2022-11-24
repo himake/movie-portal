@@ -1,0 +1,27 @@
+.navbar.justify-content-center
+  %a.navbar-brand{href: root_path}
+    =image_tag 'download.png', alt: 'movie-portal', height: '50px', width: '50px'
+    = "Movie-portal"
+  .nav-item
+    = link_to t('home'), root_path, class: 'nav-link'
+  .nav-item
+    = link_to t('films'), movies_path, class: 'nav-link'
+  .nav-item
+    =link_to t('serials'), serials_path, class: 'nav-link'
+  - if current_user  
+    .nav-item
+      = link_to t('profile'), user_root_path, class: 'nav-link'
+    .nav-item
+      = link_to t('log_out'), destroy_user_session_path, method: :delete, class: 'nav-link'
+    - if current_user.admin?
+      .nav-item
+        = link_to t('admin_panel'), admin_root_path, class: 'nav-link'
+  -else
+    .nav-item
+      = link_to t('log_in'), user_session_path, class: 'nav-link'
+    .nav-item
+      = link_to t('sign_up'), new_user_registration_path, class: 'nav-link'
+  .nav-item{ :style => "padding-top: 20px;" }
+    = form_for search_path, url: search_path, method: :get do |f|
+      .search-item
+        = text_field_tag :q, params[:q], placeholder: t('search'), onkeyup: "$(this).parent('form').submit();"

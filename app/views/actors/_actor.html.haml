@@ -1,0 +1,5 @@
+= link_to actor_path(actor.id) do
+  %li
+    %img{ src: "https://image.tmdb.org/t/p/w185#{actor.image}", class: 'actor-img'}
+    %br
+    = link_to actor.full_name, actor_path(actor.id), class: 'link'

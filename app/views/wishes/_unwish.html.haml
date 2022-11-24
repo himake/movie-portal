@@ -1,0 +1,8 @@
+-if wishable.class.to_s == "Movie"
+  = link_to movie_wish_path(wishable, 1), method: "delete", remote: true do
+    %h3.bi.bi-star-fill
+  %h3.count= wishable.wishes.count
+-if wishable.class.to_s == "Serial"
+  = link_to serial_wish_path(wishable, 1), method: "delete", remote: true do
+    %h3.bi.bi-star-fill
+  %h3.count= wishable.wishes.count

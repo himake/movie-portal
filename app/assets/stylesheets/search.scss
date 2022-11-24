@@ -1,0 +1,96 @@
+// Place all the styles related to the search controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.search-img {
+    height: 300px;
+    width: 250px;
+}
+
+.search-name {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.search-main {
+    position: relative;
+    left: 10%;
+    top: 100px;
+    width: 100%;
+    height: 100%;
+    color: var(--main-color);
+    font-weight: bold;
+}
+
+.search-no-img {
+    height: 300px;
+    width: 250px;
+    border: 1px solid;
+}
+
+.result-type {
+    display: inline-block;
+}
+
+.bi.bi-search {
+    color: var(--main-color);
+    display: inline-block;
+}
+
+.search-list {
+    list-style: none;
+    position: relative;
+    padding: 30px 0px;
+    height: 450px;
+    width: 100%;
+    margin: auto;
+}
+
+.search-list li {
+    display: inline-block;
+    width: 300px;
+    height: 250px;
+}
+
+a.dropdown-item {
+    color: var(--main-bg-color);
+    border-radius: 10px;
+    display: inline-block;
+    width: 200px;
+}
+
+a.dropdown-item:active {
+    color: var(--main-color);
+    background-color: white;
+    border-radius: 10px;
+}
+
+@media(min-width: 1000px) {
+    .header-search-item {
+        color: var(--main-second-color);
+        top: 10%;
+        width: 350px;
+        display: inline;
+        position: absolute;
+        left: 75%;
+    }
+    .dropdown {
+        width: 250px;
+        left: 30px;
+        opacity: 95%;
+        background-color: white;
+        padding: 0px;
+        list-style: none;
+        color: var(--main-color);
+        border-radius: 5px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .header-search-item {
+        display: none;
+    }
+    .dropdown {
+        display: none;
+    }
+}

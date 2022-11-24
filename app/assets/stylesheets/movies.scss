@@ -1,0 +1,107 @@
+// Place all the styles related to the movies controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.attributes-list {
+    width: 300px;
+    list-style: none;
+    padding-inline-start: 0px;
+}
+
+.attributes-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 5px 5px 5px;
+}
+
+.attribute-name {
+    color: var(--main-color);
+}
+
+.attribute-link {
+    color: var(--main-second-color);
+    text-decoration: underline;
+}
+
+.attribute-value {
+    color: var(--main-second-color);
+    padding-left: 20px;
+    white-space: nowrap;
+}
+
+.movie-main {
+    left: 5%;
+    top: 100px;
+    color: var(--main-second-color);
+}
+
+.attribute-link:hover {
+    color: var(--main-color);
+}
+
+.section-name {
+    position: relative;
+    top: 30px;
+    color: var(--main-color);
+    font-weight: bold;
+    height: 50px;
+}
+
+.movie-list {
+    list-style: none;
+    position: relative;
+    padding: 30px 0px;
+}
+
+.movie-list li {
+    display: inline-block;
+    width: 210;
+}
+
+.movie-video_key {
+    height: 300px;
+    width: 600px;
+}
+
+.movie-img {
+    height: auto;
+    width: 300px;
+}
+
+.movie-home-img {
+    height: 300px;
+}
+
+.movie-no-img {
+    border: 1px solid;
+    height: 250px;
+    width: 250px
+}
+
+.text-justify {
+    width: 600px;
+    padding: 30px 0px;
+}
+
+.control-container {
+    width: 300px;
+}
+
+.count {
+    display: inline-block;
+}
+
+#like-container {
+    display: inline-block;
+}
+
+#wish-container {
+    display: inline-block;
+}
+
+#like-container h3 {
+    display: inline-block;
+}
+
+#wish-container h3 {
+    display: inline-block;
+}

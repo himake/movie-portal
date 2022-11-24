@@ -1,0 +1,24 @@
+.form_container
+  %h2.form_header=t('.sign_in')
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    .field
+      .input-group
+        .input-group-prepend
+          .input-group-text.bg-light.text-dark  Email
+        = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' 
+    .field
+      .input-group
+        .input-group-prepend
+          .input-group-text.bg-light.text-dark= t('activerecord.attributes.user.password')
+        = f.password_field :password, autocomplete: "current-password", class: 'form-control' 
+    - if devise_mapping.rememberable?
+      .field
+      .input-group
+        .input-group-prepend
+          .input-group-text
+            .checkbox
+            = f.check_box :remember_me
+          .input-group-text.bg-light.text-dark= t('activerecord.attributes.user.remember_me')
+      .actions
+        %button.btn.form_button= t('.sign_in')
+  = render "devise/shared/links"

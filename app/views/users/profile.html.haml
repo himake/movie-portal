@@ -1,0 +1,63 @@
+%br
+.user-main
+  .profile-info
+    %h3.profile-title= t('profile')
+    -if @user.image.attached?
+      =image_tag @user.image, class: "user-img"
+    -else
+      =image_tag 'no_photo.png', class: "user-img"
+    .attribute-block
+      = link_to edit_user_registration_path do
+        %h3.bi.bi-pencil
+    .attribute-block
+      .attribute-title Email
+      .attribute-value= @user.email
+    .attribute-block
+      .attribute-title= t('name')
+      .attribute-value= is_exist(@user.name)
+    .attribute-block
+      .attribute-title= t('surname')
+      .attribute-value= is_exist(@user.surname)
+  .user-statistics
+    %h3.profile-title= t('statistic')
+    .diagrams
+      .diagrams-item
+        = pie_chart @user.liked_movies.group(:category).count.map { |item| [item[0].name, item[1]] }, donut: true
+        .count=@user.liked_movies.count
+        .panel-label= t('liked')
+      .diagrams-item
+        = pie_chart @user.wished_movies.group(:category).count.map { |item| [item[0].name, item[1]] }, donut: true
+        .count=@user.wished_movies.count
+        .panel-label= t('wished')
+    .h3.section-name= t('liked')
+    -if @user.liked_movies.count > 0
+      %ul.liked-movie-list
+        -@user.liked_movies.each do |movie|
+          %li.liked-movie-item
+            -if movie.image
+              %img.liked-movie-img{ src: "https://image.tmdb.org/t/p/w300#{movie.image}", alt: movie.name }
+            - else
+              %img.movie-no-img    
+            %br
+            = link_to movie.name, movie_path(movie), class: 'link'
+            .small= movie.release_date.year
+    -else 
+      .text-justify= t('no_ifomation')
+    .h3.section-name= t('wished')
+    -if @user.wished_movies.count > 0
+      %ul.liked-movie-list
+        -@user.wished_movies.each do |movie|
+          %li.liked-movie-item
+            -if movie.image
+              %img.liked-movie-img{ src: "https://image.tmdb.org/t/p/w300#{movie.image}", alt: movie.name }
+            - else
+              %img.movie-no-img    
+            %br
+            = link_to movie.name, movie_path(movie), class: 'link'
+            .small= movie.release_date.year
+    -else
+      .text-justify= t('no_ifomation')
+
+    = link_to "En", :controller => controller_name, :action => action_name, :locale => "en"
+    = '/'
+    = link_to "Ru", :controller => controller_name, :action => action_name, :locale => "ru"

@@ -1,0 +1,13 @@
+.main 
+  .h3.section-name= t('serials')
+  %ul.movie-list
+    -@serials.each do |serial|
+      = link_to serial_path(serial) do
+        %li.movie-title
+          -if serial.image
+            %img.movie-home-img{ src: "https://image.tmdb.org/t/p/w300#{serial.image}", alt: serial.name }
+          - else
+            %img.movie-no-img    
+          %br
+          = link_to serial.name, serial_path(serial), class: 'link'
+          .small= serial.release_date.year

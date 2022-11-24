@@ -1,0 +1,45 @@
+.main
+  = render('layouts/carousel')
+  %h3.section-name= t('films')
+  %ul.home-movie-list
+    -@movies.each do |movie|
+      = link_to movie_path(movie) do
+        %li.movie-title
+          -if movie.image
+            %img.movie-home-img{ src: "https://image.tmdb.org/t/p/w300#{movie.image}", alt: movie.name }
+          - else
+            %img.movie-no-img    
+          %br
+          = link_to movie.name, movie_path(movie), class: 'link'
+          .small= movie.release_date.year
+  %h3.section-name= t('last_trailers')
+  %ul.home-trailer-list
+    -@movies_with_trailers.each do |movie|
+      = link_to movie_path(movie) do
+        %li.movie-title
+          %iframe.video{ src: "https://www.youtube.com/embed/#{movie.video_key}" }
+          %br
+          = link_to movie.name, movie_path(movie), class: 'link'
+          .small= movie.release_date.year
+  %h3.section-name= t('tv_serials')
+  %ul.home-movie-list
+    -@tv_serials.each do |serial|
+      = link_to serial_path(serial) do
+        %li.movie-title
+          -if serial.image
+            %img.movie-home-img{ src: "https://image.tmdb.org/t/p/w300#{serial.image}", alt: serial.name }
+          - else
+            %img.movie-no-img
+          %br
+          = link_to serial.name, serial_path(serial), class: 'link'
+          .small= "#{serial.release_date.year}"
+  %h3.section-name= t('last_tv_trailers')
+  %ul.home-trailer-list
+    -@seasons_with_trailers.each do |season|
+      = link_to season_path(season) do
+        %li.season-title
+          %iframe.video{ src: "https://www.youtube.com/embed/#{season.video_key}" }
+          %br
+          = link_to season.name, season_path(season), class: 'link'
+  %br
+  %br

@@ -1,0 +1,37 @@
+.main
+  .container
+    .row
+      .col-4
+        %h2= is_exist(@director.full_name)
+        %img.director-img{ src: "https://image.tmdb.org/t/p/w300#{@director.image}", alt: @director.full_name }
+        %br
+        %ul.attributes-list
+          %li
+            .attribute-name= t('nationality')
+            .attribute-value= is_exist(@director.place_of_birth)
+          %li
+            .attribute-name= t('birthday')
+            .attribute-value= is_exist(@director.date_of_birth)
+      .col-8
+        %h4.section-name= t('biography')
+        .text-justify= is_exist(@director.biography)
+        -if @director.movies.count > 0
+          %h4.section-name= t('movies_made')
+          %ul.home-movie-list
+            -@director.movies.each do |movie|
+              = link_to movie_path(movie) do
+                %li.movie-title
+                  %img.movie-home-img{ src: "https://image.tmdb.org/t/p/w300#{movie.image}", alt: movie.name }
+                  %br
+                  = link_to movie.name, movie_path(movie), class: 'link'
+                  .small= "#{movie.release_date.year}" #{movie.country}"
+        -if @director.serials.count > 0
+          %h4.section-name= t('serials_made')
+          %ul.home-movie-list
+            -@director.serials.each do |movie|
+              = link_to movie_path(movie) do
+                %li.movie-title
+                  %img.movie-home-img{ src: "https://image.tmdb.org/t/p/w300#{movie.image}", alt: movie.name }
+                  %br
+                  = link_to movie.name, movie_path(movie), class: 'link'
+                  .small= "#{movie.release_date.year}" #{movie.country}"

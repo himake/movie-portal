@@ -1,0 +1,18 @@
+.search-main
+  = form_for search_path, method: :get do |f|
+    .search-item
+      = text_field_tag :q, params[:q], onkeyup: "$(this).parent('form').submit();"
+  %h2.section-name= t('search_result')
+  %ul.search-list
+    -@results.each do |result|
+      %li
+        = link_to search_result_link(result) do
+          -unless result[:hint][:image].nil?
+            %img.search-img{ src: "https://image.tmdb.org/t/p/w185#{result[:hint][:image]}", alt: result[:hint][:name] }
+          -else
+            %img.search-no-img
+          %br
+          %h4.search-name= result[:hint][:name]
+          %h6= t(result[:hint][:type].downcase)
+          = link_to t('more'), search_result_link(result), class: 'link'
+  =paginate @results

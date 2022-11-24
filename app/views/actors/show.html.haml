@@ -1,0 +1,40 @@
+.main
+  .container
+    .row
+      .col-4
+        %h2= is_exist(@actor.full_name)
+        -if @actor.image 
+          %img.director-img{ src: "https://image.tmdb.org/t/p/w185#{@actor.image}", alt: @actor.full_name }
+        -else
+          %img.director-no-img
+        %br
+        %ul.attributes-list
+          %li
+            .attribute-name= t('nationality')
+            .attribute-value= is_exist(@actor.place_of_birth)
+          %li
+            .attribute-name= t('birthday')
+            .attribute-value= is_exist(@actor.date_of_birth)
+      .col-8
+        %h4.section-name= t('biography')
+        .text-justify= is_exist(@actor.biography)
+        -if @actor.movies.count > 0
+          %h4.section-name= t('stared_movies')
+          %ul.home-movie-list
+            -@actor.movies.each do |movie|
+              = link_to movie_path(movie) do
+                %li.movie-title
+                  %img.movie-home-img{ src: "https://image.tmdb.org/t/p/w300#{movie.image}", alt: movie.name }
+                  %br
+                  = link_to movie.name, movie_path(movie), class: 'link'
+                  .small= "#{movie.release_date.year}" #{movie.country}"
+        -if @serials.count > 0
+          %h4.section-name= t('stared_serials')
+          %ul.home-movie-list
+            -@serials.each do |movie|
+              = link_to movie_path(movie) do
+                %li.movie-title
+                  %img.movie-home-img{ src: "https://image.tmdb.org/t/p/w300#{movie.image}", alt: movie.name }
+                  %br
+                  = link_to movie.name, movie_path(movie), class: 'link'
+                  .small= "#{movie.release_date.year}"

@@ -1,0 +1,12 @@
+%li.be-comment
+  .be-img-comment
+    -if comment.user.image.attached?
+      =image_tag comment.user.image, class: "be-ava-comment"
+    -else
+      =image_tag 'no_photo.png', class: "be-ava-comment"
+  .be-comment-content
+    =link_to "#{comment.user.name} #{comment.user.surname}", user_root_path(comment.user), class: 'be-comment-name' 
+    .be-comment-time
+      .bi.bi-clock
+      = comment.time
+    .be-comment-text= comment.body
